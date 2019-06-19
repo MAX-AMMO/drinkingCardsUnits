@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/drinkingCardsUnits/static/css/main.00684f1f.chunk.css",
+    "main.css": "/drinkingCardsUnits/static/css/main.209239d5.chunk.css",
     "main.js": "/drinkingCardsUnits/static/js/main.4b4648df.chunk.js",
     "main.js.map": "/drinkingCardsUnits/static/js/main.4b4648df.chunk.js.map",
     "runtime~main.js": "/drinkingCardsUnits/static/js/runtime~main.4790f248.js",
@@ -8,9 +8,9 @@
     "static/js/2.61665a80.chunk.js": "/drinkingCardsUnits/static/js/2.61665a80.chunk.js",
     "static/js/2.61665a80.chunk.js.map": "/drinkingCardsUnits/static/js/2.61665a80.chunk.js.map",
     "index.html": "/drinkingCardsUnits/index.html",
-    "precache-manifest.6f8f8c767d7bef0969adfa05d4578b59.js": "/drinkingCardsUnits/precache-manifest.6f8f8c767d7bef0969adfa05d4578b59.js",
+    "precache-manifest.3d782828ca7e1c63d0451139d0d85740.js": "/drinkingCardsUnits/precache-manifest.3d782828ca7e1c63d0451139d0d85740.js",
     "service-worker.js": "/drinkingCardsUnits/service-worker.js",
-    "static/css/main.00684f1f.chunk.css.map": "/drinkingCardsUnits/static/css/main.00684f1f.chunk.css.map",
+    "static/css/main.209239d5.chunk.css.map": "/drinkingCardsUnits/static/css/main.209239d5.chunk.css.map",
     "static/media/logo.svg": "/drinkingCardsUnits/static/media/logo.5d5d9eef.svg"
   }
 }
