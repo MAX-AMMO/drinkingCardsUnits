@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1, shrink-to-fit=no">
+    <title>title</title>
+  <meta name="author" content="name">
+  <meta name="description" content="description here">
+  <meta name="keywords" content="keywords,here">
+  <!-- <link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon">
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=font1|font2|etc" type="text/css">
+  <link rel="stylesheet" href="stylesheet.css" type="text/css"> -->
+  <style type="text/css">
+  .selector-for-some-widget {
+    box-sizing: content-box;
+  }
+
+  #main{
+    /*background-color: green;*/
+    /*height: 3000px;*/
+  }
+
+  table .active{
+    /*background-color: green;*/
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+
+  .heading {
+    pointer-events:none;
+  }
+
+  #top-stack, #bottom-stack{
+    position: fixed;
+    padding: 0;
+  }
+  #top-stack{
+    top: 0;
+    z-index: 51;
+  }
+  #bottom-stack{
+    bottom: 0;
+    z-index: 50;
+  }
+  .bar{
+    /*height: 6rem;*/
+    /*border: thin solid lightgray;*/
+    padding: 0 !important;
+    background-color: rgba(255,255,255,0.9)
+  }
+
+  #input{
+    height: 6rem;
+    /*border-top: none;*/
+  }
+
+  #results{
+    /*overflow-x: scroll;*/
+    overflow-y: hidden;
+    /*white-space: nowrap;*/
+    display: flex;
+    flex-wrap: nowrap;
+    /*overflow-x: scroll;*/
+    overflow-x: auto;
+    text-align: center;
+    padding-bottom: 0.5rem !important;
+
+    -webkit-overflow-scrolling: touch;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+  }
+
+  #results.collapse:not(.show){
+    display: none !important;
+  }
+
+  .result-title {
+    /*background-color: red;*/
+    /*width: 100%;*/
+    height: 40%;
+    border-bottom: thin solid gray;
+    padding-top: 0.26rem;
+  }
+
+  .result-number {
+    /*background-color: green;*/
+    /*width: 100%;*/
+    height: 60%;
+    font-size: 2rem;
+  }
+
+  .result-title .text-wrapper, .result-number .text-wrapper{
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .result-container{
+    flex: 0 0 auto;
+    /*height: 5.4rem;
+    width: 5.4rem;*/
+    border-radius: 0.5rem;
+    border: solid thin gray;
+    margin-right: 4px;
+    /*float: left;*/
+  }
+
+  .result-container-size-1{
+    /*height: 5.4rem;
+    width: 5.4rem;*/
+  }
+
+  #size-wrapper, #strength-wrapper{
+    /*width: 50%;*/
+    height: 100%;
+    padding: 0.5rem; 
+    float: left;
+    position: relative;
+  }
+
+  #size-wrapper input, #strength-wrapper input{
+    height: 4.9rem;
+    font-size: 1.5rem;
+    /*position: absolute;*/
+    background: transparent;
+  }
+
+  #size-wrapper .input-background, #strength-wrapper .input-background{
+    height: 4.9rem;
+    /*width: 100%;*/
+    position: absolute;
+    color: #e8e8e8;
+    text-align: center;
+    font-size: 19vw;
+    line-height: 0.6;
+    overflow: hidden;
+    white-space: nowrap;
+    background: rgba(255,255,255,0.7);
+    /*background-color: green;*/
+  }
+
+  .input-background .text-wrapper{
+    /*background-color: red;*/
+    vertical-align: middle;
+    position: absolute;
+    bottom: 6px;
+    right: -0.1rem;
+  }
+
+  #size-wrapper{
+    /*padding-left: 0.5rem;*/
+    width: 55%;
+  }
+
+  #strength-wrapper{
+    width: 45%;
+  }
+
+  #navbar-categories{
+    display: block;
+  }
+
+  #navbar-categories .nav-item{
+    text-align: center;
+    flex-grow: 1;
+  }
+
+  #navbar-categories .dropdown-menu{
+    left: unset;
+    right: 0;
+  }
+
+  .table{
+    table-layout: fixed;
+  }
+
+  .row-image{
+    width: 3rem;
+  }
+
+  @media (min-width: 325px) {
+    .row-name{
+      width: 10rem;
+    }
+  }
+
+  .row-size, .row-strength{
+    text-align: center;
+  }
+
+  </style>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  <script type="text/javascript">/*!
+ * jQuery Mousewheel 3.1.13
+ *
+ * Copyright 2015 jQuery Foundation and other contributors
+ * Released under the MIT license.
+ * http://jquery.org/license
+ */
+!function(a){"function"==typeof define&&define.amd?define(["jquery"],a):"object"==typeof exports?module.exports=a:a(jQuery)}(function(a){function b(b){var g=b||window.event,h=i.call(arguments,1),j=0,l=0,m=0,n=0,o=0,p=0;if(b=a.event.fix(g),b.type="mousewheel","detail"in g&&(m=-1*g.detail),"wheelDelta"in g&&(m=g.wheelDelta),"wheelDeltaY"in g&&(m=g.wheelDeltaY),"wheelDeltaX"in g&&(l=-1*g.wheelDeltaX),"axis"in g&&g.axis===g.HORIZONTAL_AXIS&&(l=-1*m,m=0),j=0===m?l:m,"deltaY"in g&&(m=-1*g.deltaY,j=m),"deltaX"in g&&(l=g.deltaX,0===m&&(j=-1*l)),0!==m||0!==l){if(1===g.deltaMode){var q=a.data(this,"mousewheel-line-height");j*=q,m*=q,l*=q}else if(2===g.deltaMode){var r=a.data(this,"mousewheel-page-height");j*=r,m*=r,l*=r}if(n=Math.max(Math.abs(m),Math.abs(l)),(!f||f>n)&&(f=n,d(g,n)&&(f/=40)),d(g,n)&&(j/=40,l/=40,m/=40),j=Math[j>=1?"floor":"ceil"](j/f),l=Math[l>=1?"floor":"ceil"](l/f),m=Math[m>=1?"floor":"ceil"](m/f),k.settings.normalizeOffset&&this.getBoundingClientRect){var s=this.getBoundingClientRect();o=b.clientX-s.left,p=b.clientY-s.top}return b.deltaX=l,b.deltaY=m,b.deltaFactor=f,b.offsetX=o,b.offsetY=p,b.deltaMode=0,h.unshift(b,j,l,m),e&&clearTimeout(e),e=setTimeout(c,200),(a.event.dispatch||a.event.handle).apply(this,h)}}function c(){f=null}function d(a,b){return k.settings.adjustOldDeltas&&"mousewheel"===a.type&&b%120===0}var e,f,g=["wheel","mousewheel","DOMMouseScroll","MozMousePixelScroll"],h="onwheel"in document||document.documentMode>=9?["wheel"]:["mousewheel","DomMouseScroll","MozMousePixelScroll"],i=Array.prototype.slice;if(a.event.fixHooks)for(var j=g.length;j;)a.event.fixHooks[g[--j]]=a.event.mouseHooks;var k=a.event.special.mousewheel={version:"3.1.12",setup:function(){if(this.addEventListener)for(var c=h.length;c;)this.addEventListener(h[--c],b,!1);else this.onmousewheel=b;a.data(this,"mousewheel-line-height",k.getLineHeight(this)),a.data(this,"mousewheel-page-height",k.getPageHeight(this))},teardown:function(){if(this.removeEventListener)for(var c=h.length;c;)this.removeEventListener(h[--c],b,!1);else this.onmousewheel=null;a.removeData(this,"mousewheel-line-height"),a.removeData(this,"mousewheel-page-height")},getLineHeight:function(b){var c=a(b),d=c["offsetParent"in a.fn?"offsetParent":"parent"]();return d.length||(d=a("body")),parseInt(d.css("fontSize"),10)||parseInt(c.css("fontSize"),10)||16},getPageHeight:function(b){return a(b).height()},settings:{adjustOldDeltas:!0,normalizeOffset:!0}};a.fn.extend({mousewheel:function(a){return a?this.bind("mousewheel",a):this.trigger("mousewheel")},unmousewheel:function(a){return this.unbind("mousewheel",a)}})});
+</script>
+
+  <script type="text/javascript">
+  </script>
+
+  </head>
+
+  <body data-spy="scroll" data-target="#navbar-categories" data-offset="0">
+  
+  <div id="left-side">
+
+  <div class="container-fluid" id="top-stack">
+
+    <div class="container-fluid bar" id="filter">
+      <nav id="navbar-categories" class="navbar navbar-light bg-light">
+        <ul class="nav nav-pills">
+          <!-- <li class="nav-item category" data-category="wine">
+            <a class="nav-link"  href="#table-wine">Wine</a>
+          -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">more</a>
+            <div class="dropdown-menu">
+              <!-- <a class="dropdown-item" data-category="wine" href="#table-wine">wine</a> -->
+              <div role="separator" class="dropdown-divider"></div>
+              <a class="dropdown-item" id="showOnlyCurrentSystemDrinks-toggle" href="javascript: toggleShowOnlyCurrentSystemDrinks()"></a>
+              <a class="dropdown-item" href="#">info</a>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+  </div>
+
+  <div class="container-fluid" id="main">
+
+      <!-- <h4 class="heading" id="table-wine">Wine</h4>
+      
+      <table class="table">
+        <tbody>
+          <tr>
+            <td class="row-image">
+            </td>
+            <td class="row-name">
+              Wine
+            </td>
+            <td class="row-size">
+              187.5
+            </td>
+            <td class="row-strength">
+              13%
+            </td>
+          </tr>
+        </tbody>
+      </table> -->
+
+  </div>
+
+  </div>
+  <div id="right-side">
+
+  <div class="container-fluid" id="bottom-stack">
+    
+    <div class="container-fluid bar collapse" id="results">
+        <!-- <div class="result-container">
+          <div class="result-title">
+            U.K. Units
+          </div>
+          <div class="result-number">
+            14.5
+          </div>
+        </div> -->
+    </div>
+    <div class="container-fluid bar" id="input">
+      <div id="size-wrapper">
+        <div class="input-background"><div class="text-wrapper">ml</div></div>
+        <div class="input-group">
+
+          <input id="size-input" type="number" class="form-control" placeholder="Size" aria-label="Size" aria-describedby="basic-addon2">
+
+          <div class="btn-group-vertical">
+            <button id="ml-button" onclick="setMeasurementUnits('metric');" class="btn btn-outline-secondary" type="button">ml</button>
+            <button id="floz-button" onclick="setMeasurementUnits('imperial')" class="btn btn-outline-secondary" type="button">fl oz</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="strength-wrapper">
+        <div class="input-background"><div class="text-wrapper">%</div></div>
+        <div class="input-group">
+          <input id="strength-input" type="number" class="form-control" placeholder="%" aria-label="Strength" aria-describedby="basic-addon2">
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  </div>
+
+  <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.5.3/modernizr.min.js" type="text/javascript"></script> -->
+  <script type="text/javascript">
+
+    settings = {
+      systemOfMeasurement: "metric",
+      showOnlyCurrentSystemDrinks: false,
+      results : {
+        currentSize: 100,
+        minSize: 100,
+        maxSize: 110,
+        grow: true
+      }
+      // unitsHaveBeenSet: false
+    }    
+
+    gramsPerCard = 10
+    halfCardCutOff = gramsPerCard * 0.075
+
+    realDensityOfAlcohol = 0.789
+    densityOfAlcoholGovornmentsUse = 0.8
+
+    floztoml = 0.033814
+
+    unitGramsPerCountryCode = [
+            { "unitGrams" : 10, "countries" : ["IE"] },
+            { "unitGrams" : 8, "countries" : ["UK"] },
+            { "unitGrams" : 17.74, "countries" : ["US"] },
+            { "unitGrams" : 20, "countries" : ["JP"] },
+            { "unitGrams" : 12, "countries" : ["IT", "FN", "DMK"] }
+    ]
+
+    drinkData = [ 
+            // { "name" : "shot", "size" : 30, "strength" : 40 },
+            // { "name" : "shot", "size" : 25, "strength" : 40 },
+            // { "name" : "lager beer", "size" : 500, "strength" : 5 },
+            // { "name" : "sake", "size" : 30, "strength" : 12 } 
+          ]
+
+    drinkQualitiesData = {
+             "strength" : { "displayRounding" : 1 } ,
+             "mlAlc" : { "displayRounding" : 1 } ,
+             "gAlc" : { "displayRounding" : 2 } ,
+             "gpl" : { "displayRounding" : 2 } ,
+             "units" : { "displayRounding" : 2 } 
+    }
+
+    var tableData
+    function calculateAndCreateTables(){
+      function createTableRow(categoryDrinks){
+        html = ''
+        $.each(categoryDrinks, function(drinkIndex, drinkData){
+          var metricSize; var imperialSize; var originalSizeUnits;
+          if ( drinkData.metricSize ){
+            metricSize = drinkData.metricSize;
+            imperialSize = round((drinkData.metricSize * floztoml), 1);
+            originalSizeUnits = "metric";
+          }
+          else if ( drinkData.imperialSize ){
+            metricSize = round((drinkData.imperialSize / floztoml), 1);
+            imperialSize = drinkData.imperialSize;
+            originalSizeUnits = "imperial"
+          }
+
+          html = html + `<tr data-originalSizeUnits="`+originalSizeUnits+`">
+                          <td class="row-image">
+                          </td>
+                          <td class="row-name">
+                            `+drinkData.name+`
+                          </td>
+                          <td class="row-size metric">
+                            `+metricSize+`
+                          </td>
+                          <td class="row-size imperial">
+                            `+imperialSize+`
+                          </td>
+                          <td class="row-strength">
+                            `+drinkData.strength+`%
+                          </td>
+                        </tr>`
+        })
+        return(html)
+      }
+      function createHeadingAndTable(categoryName, categoryDrinks){
+        html = `<h4 class="heading" id="table-`+categoryName+`">`+categoryName+`</h4>
+                <table class="table">
+                  <tbody>
+                  `+createTableRow(categoryDrinks)+`
+                  </tbody>
+                </table>`
+        return(html)
+      }
+      function createNavItem(categoryName){
+        html= `<li class="nav-item category" data-category="`+categoryName+`">
+                <a class="nav-link"  href="#table-`+categoryName+`">`+categoryName+`</a>
+              </li>`
+        return html
+      }
+      tableData = {}
+      //convert drink data to table data
+      $.each(drinkData, function(drinkDataIndex, drinkDataValue){
+        //add the category to the table data if it's not there
+        if ( !tableData[drinkDataValue["category"]] ){ tableData[drinkDataValue["category"]] = [] };
+        // add the object to the category
+        tableData[drinkDataValue.category].push(drinkDataValue)
+      });
+
+      //sort the table data (this data is also for the nav)
+      sortedTableData = {}
+      $.each(["wine", "beer", "spirit"], function(index, category){
+        sortedTableData[category] = tableData[category]
+      })
+      $.each(tableData, function(category){
+        if (!sortedTableData[category] && category != "other") {
+          sortedTableData[category] = tableData[category]
+        }
+      })
+      if( tableData["other"] ){
+        sortedTableData["other"] = tableData["other"]
+      }
+
+      $("#main").empty()
+
+      $.each(sortedTableData, function(categoryName, categoryDrinks){
+        $("#main").append(createHeadingAndTable(categoryName, categoryDrinks));
+        // $("#navbar-categories ul.nav-pills").prepend(createNavItem(categoryName))
+        $(createNavItem(categoryName)).insertBefore( $("#navbar-categories .nav-item.dropdown") )
+        layoutCategoryNav()
+      });
+    }
+
+    function mergeAPIDataintoDrinkData(json) {
+        // get api data (this is a callback that is run when the api call loads)
+        apiData = json.feed.entry
+        var rowData = [];
+        drinkObject = {}; // this object is re populated with each new row
+        
+        for(var r=0; r<apiData.length; r++) {
+            var cell = apiData[r]["gs$cell"];
+            var val = cell["$t"];
+            switch( cell.col ){
+              // go through rows 1, 2 and 3 adding the data to the correct part of the object
+              case "1":
+                drinkObject.name = val;
+                break;
+              case "2":
+                drinkObject.category = val;
+                break;
+              case "3":
+                drinkObject.metricSize = Number(val);
+                break;
+              case "4":
+                drinkObject.imperialSize = Number(val);
+                break;
+              case "5": //3 is special. It means we can write to the drink data object, then clear it for the next one
+                drinkObject.strength = Number(val);
+                drinkData.push( drinkObject );
+                drinkObject = {};
+                break;
+            }
+        }
+        calculateAndCreateTables()
+        // console.log(drinkData)
+        // makeSureResultCardScrollIsObvious()
+    }
+
+    function round(num, decimals = 2){
+      // return num.toFixed(decimals) // global roundig amount default is 2
+      zerosToReplace = ""; for (var i = 0; i < decimals; i++ ) { zerosToReplace = zerosToReplace + "0" }
+      var re = new RegExp("[.,]"+zerosToReplace)
+      return (num).toFixed(decimals).replace(re, "");
+      // return (num).toFixed(decimals).replace(/[.,]00$/, "");
+    }
+
+    function createResultsCard(title, number){
+      html = `
+        <div class="result-container result-container-size-1" style="width: `+settings.results.currentSize+`px; height: `+settings.results.currentSize+`px;">
+          <div class="result-title">
+            <div class="text-wrapper">`+title+`</div>
+          </div>
+          <div class="result-number">
+            <div class="text-wrapper">`+number+`</div>
+          </div>
+      `
+      return html
+    }
+
+    function calculateResults(size, strength){
+      if ( settings.systemOfMeasurement == "imperial") { size = size / floztoml }
+      var drinkData = { "size": size, "strength": strength }
+      drinkData.mlAlc = (drinkData.size/100)*drinkData.strength //ml of alcohol
+      drinkData.gAlc = drinkData.mlAlc*realDensityOfAlcohol //g of alcohol
+      drinkData.gpl = drinkData.gAlc / drinkData.size
+      if(drinkData.gAlc/gramsPerCard < halfCardCutOff){
+        if( drinkData.gAlc/gramsPerCard == 0) { drinkData.cards = 0; } else { drinkData.cards = 0.5; }
+      }
+      else{
+        drinkData.cards = round(drinkData.gAlc/gramsPerCard, 0)
+      }
+
+      json = {
+        "cards" : drinkData.cards
+      }
+
+      $.each(unitGramsPerCountryCode, function(unitGramLoopIndex, unitGramValue){
+        numberOfUnitsForThisGramValue = (drinkData.mlAlc*densityOfAlcoholGovornmentsUse) / unitGramValue.unitGrams;
+        drinkData["unitGramsOf"+unitGramValue.unitGrams.toString()] = numberOfUnitsForThisGramValue;
+        $.each(unitGramValue.countries, function(countryLoopIndex, countryCode){
+          json[countryCode +" Units"] = round(numberOfUnitsForThisGramValue,2)
+        })
+      });
+
+      return json
+    }
+
+    function showResults(json){
+      $("#results").empty();
+      $.each(json, function(key, value){
+        // console.log(key)
+        // console.log(value)
+        $("#results").append(createResultsCard(key, value))
+      });
+
+      //to terigger the card sizing once.
+      if ( !settings.results.areLoaded == true ){
+        settings.results.areLoaded = true;
+        makeSureResultCardScrollIsObvious();// inefficient to run this so often!
+      }
+    }
+
+    function inputsUpdated(){
+      // console.log("inputsupdated fired")
+      sizeIn = parseFloat($("#size-input").val()) || 0
+      strengthIn = parseFloat($("#strength-input").val()) || 0
+
+
+      if(!isNaN(sizeIn) && !isNaN(strengthIn)){ //if both are numbers
+        // console.log("both are nubmers")
+        // json = {
+        //   "Cards" : 1,
+        //   "UK Units" : 12.4,
+        //   "IE Units" : 13.3,
+        //   "US Units" : 15.4,
+        //   "JP Units" : 5
+        // }
+        // showResults(json);
+        showResults(calculateResults(sizeIn, strengthIn));
+        $("#results").collapse('show')
+      }
+
+    }
+
+    // $(".table tr").click(function(){
+    $("#main").on("click", ".table tr" ,function(){
+      // alert ("clicked")
+      // $("#results").collapse('toggle')
+      if ( !$(this).hasClass("active") ){
+        window.navigator.vibrate(100); // vibrate for 200ms
+        // alert("vibrate")
+      }
+
+      $(".table tr").removeClass("active")
+      $(this).addClass("active")
+      setInputs( parseFloat($(this).children(".row-size."+settings.systemOfMeasurement+"").html()), parseFloat($(this).children(".row-strength").html()))
+    });
+
+    function setInputs(size, strength){
+      $("#size-input").val(size)
+      $("#strength-input").val(strength)
+      inputsUpdated()
+    }
+
+    $("#size-input").keyup( function(){ $(".table tr").removeClass("active"); inputsUpdated(); });
+    $("#strength-input").keyup( function(){ $(".table tr").removeClass("active"); inputsUpdated(); });
+
+    function toggleShowOnlyCurrentSystemDrinks(){
+      settings.showOnlyCurrentSystemDrinks = !settings.showOnlyCurrentSystemDrinks;
+      // console.log(settings.showOnlyCurrentSystemDrinks)
+      showAndHideDrinksBasedOnSystem();
+    }
+
+    function showAndHideDrinksBasedOnSystem(){
+      if (settings.showOnlyCurrentSystemDrinks == false){
+        $("tr[data-originalSizeUnits='metric']").show()
+        $("tr[data-originalSizeUnits='imperial']").show()
+        $("#showOnlyCurrentSystemDrinks-toggle").html("see "+settings.systemOfMeasurement+" drinks only")
+      }
+      else {
+        $("#showOnlyCurrentSystemDrinks-toggle").html("see all drinks")
+        if ( settings.systemOfMeasurement == "metric" ){
+          $("tr[data-originalSizeUnits='metric']").show()
+          $("tr[data-originalSizeUnits='imperial']").hide()
+        }
+        else if ( settings.systemOfMeasurement == "imperial" ){
+          $("tr[data-originalSizeUnits='metric']").hide()
+          $("tr[data-originalSizeUnits='imperial']").show()
+        }
+      }
+    }
+
+    function layoutCategoryNav(){
+      //arrange navbar categories
+      while ( $("#navbar-categories").height() < 70 && $("#navbar-categories ul .nav-item").is(":hidden")){
+        element = $("#navbar-categories ul .nav-item.category:hidden:first")
+        element.show()
+        category = element.attr("data-category")
+        if($("#navbar-categories .dropdown-menu").children("a[data-category='"+category+"']").length != 0 ){
+          $("#navbar-categories .dropdown-menu a[data-category='"+category+"']").remove()
+        }
+        // console.log("1")
+      }
+      while ( $("#navbar-categories").height() >= 70 ){
+        element = $("#navbar-categories ul .nav-item.category:visible:last")
+        element.hide()
+        category = element.attr("data-category")
+        if($("#navbar-categories .dropdown-menu").children("a[data-category='"+category+"']").length == 0 ){
+          $("#navbar-categories .dropdown-menu").prepend('<a class="dropdown-item" data-category="'+category+'" href="#table-'+category+'">'+category+'</a>')
+        }
+        // console.log("2")
+      }
+    }
+
+    function toggleResultCardSizes(){
+      if( $(".result-container:first").hasClass("result-container-size-1") ){
+        $(".result-container").removeClass("result-container-size-1")
+        $(".result-container").addClass("result-container-size-2")
+      }
+      else{
+        $(".result-container").removeClass("result-container-size-2")
+        $(".result-container").addClass("result-container-size-1")
+      }
+    }
+
+    function makeSureResultCardScrollIsObvious(){
+      function isWithinSafeBounds(){
+        value = parseFloat("0." + String( $( window ).width() / $(".result-container:first").outerWidth(true) ).split(".")[1])
+        if( (0.3 < value && value < 0.7) ) { return true; }
+        else { return false; }
+      }
+
+      if (settings.results.areLoaded && $("#results").length > 0){//this condition is here to only do the work the first time the results are loaded, otherwise clicking on any table entry would recalculate all this, which isn't needed.
+        console.log("firing")
+        var firstResultWidth = $(".result-container:first").width()
+        
+        if ( firstResultWidth <= settings.results.minSize ){ settings.results.grow = true; console.log("grow") }
+        if ( firstResultWidth >= settings.results.maxSize ){ settings.results.grow = false; console.log("shrink") }
+
+        // settings.results.currentSize = firstResultWidth
+        //other way, with growing and shrinking
+        while (! isWithinSafeBounds() ) {
+          var firstResultWidth = $(".result-container:first").width();
+          var newSize
+          if ( settings.results.grow ){ newSize = firstResultWidth + 1 }
+          else { newSize = firstResultWidth - 1 }
+          console.log("new" + newSize)
+          $(".result-container").width( newSize );
+          $(".result-container").height( newSize );
+          // console.log("new" + newSize)
+          // console.log("")
+          settings.results.currentSize = newSize + 2 // this 2 is totally arbitrary. I have no idea why it sets the size of the divs to 2 px less than newSize value
+          // console.log("res" + settings.results.currentSize)
+        }
+
+      }
+    }
+
+    $('#results').on('mousewheel', function(event, delta) {
+        // console.log(event.deltaX, event.deltaY, event.deltaFactor);
+        // this.scrollLeft -= (-event.deltaX);
+        this.scrollLeft -= (event.deltaY);
+        // this.scrollLeft -= (delta);
+        event.preventDefault()
+    });
+
+    function setLayoutStuff(){
+      $("body").css("padding-top", $("#top-stack").height() + 10)
+      $("body").css("padding-bottom", $("#bottom-stack").height() + 10)
+
+      $(".heading").css("padding-top", $("#top-stack").height() )
+      $(".heading").css("margin-top", -$("#top-stack").height() )
+      //if keeping them, set the input backgrounds to the width of hte inputs here
+      $("#size-wrapper .input-background").width( $("#size-input").width() + 24)
+      $("#strength-wrapper .input-background").width( $("#strength-input").width() + 24)
+
+      // console.log("layountstuff hit")
+      layoutCategoryNav()   
+      makeSureResultCardScrollIsObvious()   
+    }
+
+    function setMeasurementUnits(system="metric"){
+      settings.systemOfMeasurement = system
+      if(system == "metric"){
+        $("#ml-button").addClass("active").siblings(this).removeClass("active")
+        $("#size-wrapper .input-background .text-wrapper").html("ml")
+        
+        $(".row-size.imperial").hide()
+        $(".row-size.metric").show()
+        // if( settings.unitsHaveBeenSet ){
+        //   $.each($(".row-size"), function(index, element){
+        //     $(this).html( round($(this).html() / floztoml), 1 )
+        //   })
+        // }
+      }
+
+      if(system == "imperial"){
+        $("#floz-button").addClass("active").siblings(this).removeClass("active")
+        $("#size-wrapper .input-background .text-wrapper").html("fl oz")
+        
+        $(".row-size.metric").hide()
+        $(".row-size.imperial").show()
+        // $.each($(".row-size"), function(index, element){
+        //   $(this).html( round($(this).html() * floztoml), 1 )
+        // })
+      }
+      // alert(settings)
+      // settings.unitsHaveBeenSet = true
+      showAndHideDrinksBasedOnSystem()
+    }
+
+  $(window).resize(function(){
+    setLayoutStuff()
+  })
+
+
+
+   function autorun()
+   {
+    setMeasurementUnits(settings.systemOfMeasurement)
+    setLayoutStuff()
+    showAndHideDrinksBasedOnSystem()
+    // showResults(calculateResults(187.5, 13))
+    showResults(calculateResults(0, 0))
+
+   }
+   if (document.addEventListener) document.addEventListener("DOMContentLoaded", autorun, false); //<-- or "load"
+   else if (document.attachEvent) document.attachEvent("onreadystatechange", autorun);
+   else window.onload = autorun;
+  </script>
+  <script type="text/javascript" src="https://spreadsheets.google.com/feeds/cells/1b5ABg-gOX1WXl5U5FMTIj5oLXS9KyDyvP6w9ium_dN0/1/public/values?alt=json-in-script&callback=mergeAPIDataintoDrinkData"></script>
+  </body>
+</html>

@@ -1,38 +1,186 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1, shrink-to-fit=no">
+    <title>Alcohol Unit Calculator</title>
+  <meta name="author" content="ince.ince.vince">
+  <meta name="description" content="description here">
+  <meta name="keywords" content="keywords,here">
+  <!--
+      manifest.json provides metadata used when your web app is installed on a user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
-
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
+      Notice the use of %PUBLIC_URL% in the tags above. It will be replaced with the URL of the `public` folder during the build. Only files inside the `public` folder can be referenced from the HTML. Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will work correctly both with client-side routing and a non-root public URL. Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>React App</title>
+
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  <script type="text/javascript">/*!
+ * jQuery Mousewheel 3.1.13
+ *
+ * Copyright 2015 jQuery Foundation and other contributors
+ * Released under the MIT license.
+ * http://jquery.org/license
+ */
+!function(a){"function"==typeof define&&define.amd?define(["jquery"],a):"object"==typeof exports?module.exports=a:a(jQuery)}(function(a){function b(b){var g=b||window.event,h=i.call(arguments,1),j=0,l=0,m=0,n=0,o=0,p=0;if(b=a.event.fix(g),b.type="mousewheel","detail"in g&&(m=-1*g.detail),"wheelDelta"in g&&(m=g.wheelDelta),"wheelDeltaY"in g&&(m=g.wheelDeltaY),"wheelDeltaX"in g&&(l=-1*g.wheelDeltaX),"axis"in g&&g.axis===g.HORIZONTAL_AXIS&&(l=-1*m,m=0),j=0===m?l:m,"deltaY"in g&&(m=-1*g.deltaY,j=m),"deltaX"in g&&(l=g.deltaX,0===m&&(j=-1*l)),0!==m||0!==l){if(1===g.deltaMode){var q=a.data(this,"mousewheel-line-height");j*=q,m*=q,l*=q}else if(2===g.deltaMode){var r=a.data(this,"mousewheel-page-height");j*=r,m*=r,l*=r}if(n=Math.max(Math.abs(m),Math.abs(l)),(!f||f>n)&&(f=n,d(g,n)&&(f/=40)),d(g,n)&&(j/=40,l/=40,m/=40),j=Math[j>=1?"floor":"ceil"](j/f),l=Math[l>=1?"floor":"ceil"](l/f),m=Math[m>=1?"floor":"ceil"](m/f),k.settings.normalizeOffset&&this.getBoundingClientRect){var s=this.getBoundingClientRect();o=b.clientX-s.left,p=b.clientY-s.top}return b.deltaX=l,b.deltaY=m,b.deltaFactor=f,b.offsetX=o,b.offsetY=p,b.deltaMode=0,h.unshift(b,j,l,m),e&&clearTimeout(e),e=setTimeout(c,200),(a.event.dispatch||a.event.handle).apply(this,h)}}function c(){f=null}function d(a,b){return k.settings.adjustOldDeltas&&"mousewheel"===a.type&&b%120===0}var e,f,g=["wheel","mousewheel","DOMMouseScroll","MozMousePixelScroll"],h="onwheel"in document||document.documentMode>=9?["wheel"]:["mousewheel","DomMouseScroll","MozMousePixelScroll"],i=Array.prototype.slice;if(a.event.fixHooks)for(var j=g.length;j;)a.event.fixHooks[g[--j]]=a.event.mouseHooks;var k=a.event.special.mousewheel={version:"3.1.12",setup:function(){if(this.addEventListener)for(var c=h.length;c;)this.addEventListener(h[--c],b,!1);else this.onmousewheel=b;a.data(this,"mousewheel-line-height",k.getLineHeight(this)),a.data(this,"mousewheel-page-height",k.getPageHeight(this))},teardown:function(){if(this.removeEventListener)for(var c=h.length;c;)this.removeEventListener(h[--c],b,!1);else this.onmousewheel=null;a.removeData(this,"mousewheel-line-height"),a.removeData(this,"mousewheel-page-height")},getLineHeight:function(b){var c=a(b),d=c["offsetParent"in a.fn?"offsetParent":"parent"]();return d.length||(d=a("body")),parseInt(d.css("fontSize"),10)||parseInt(c.css("fontSize"),10)||16},getPageHeight:function(b){return a(b).height()},settings:{adjustOldDeltas:!0,normalizeOffset:!0}};a.fn.extend({mousewheel:function(a){return a?this.bind("mousewheel",a):this.trigger("mousewheel")},unmousewheel:function(a){return this.unbind("mousewheel",a)}})});
+</script>
+
+  <script type="text/javascript">
+  </script>
+
   </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+  <body data-spy="scroll" data-target="#navbar-categories" data-offset="0">
+  <noscript>You need to enable JavaScript to run this app.</noscript>
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-  </body>
+  <div id='react'></div>
+
+
+  <script type="text/javascript">
+
+    function layoutCategoryNav(){
+      //arrange navbar categories
+      while ( $("#navbar-categories").height() < 70 && $("#navbar-categories ul .nav-item").is(":hidden")){
+        element = $("#navbar-categories ul .nav-item.category:hidden:first")
+        element.show()
+        category = element.attr("data-category")
+        if($("#navbar-categories .dropdown-menu").children("a[data-category='"+category+"']").length != 0 ){
+          $("#navbar-categories .dropdown-menu a[data-category='"+category+"']").remove()
+        }
+        // console.log("1")
+      }
+      while ( $("#navbar-categories").height() >= 70 ){
+        element = $("#navbar-categories ul .nav-item.category:visible:last")
+        element.hide()
+        category = element.attr("data-category")
+        if($("#navbar-categories .dropdown-menu").children("a[data-category='"+category+"']").length == 0 ){
+          $("#navbar-categories .dropdown-menu").prepend('<a class="dropdown-item" data-category="'+category+'" href="#table-'+category+'">'+category+'</a>')
+        }
+        // console.log("2")
+      }
+    }
+
+    // function toggleResultCardSizes(){
+    //   if( $(".result-container:first").hasClass("result-container-size-1") ){
+    //     $(".result-container").removeClass("result-container-size-1")
+    //     $(".result-container").addClass("result-container-size-2")
+    //   }
+    //   else{
+    //     $(".result-container").removeClass("result-container-size-2")
+    //     $(".result-container").addClass("result-container-size-1")
+    //   }
+    // }
+
+    function makeSureResultCardScrollIsObvious(){
+      function isWithinSafeBounds(){
+        value = parseFloat("0." + String( $( window ).width() / $(".result-container:first").outerWidth(true) ).split(".")[1])
+        if( (0.3 < value && value < 0.7) ) { return true; }
+        else { return false; }
+      }
+
+      if (settings.results.areLoaded && $("#results").length > 0){//this condition is here to only do the work the first time the results are loaded, otherwise clicking on any table entry would recalculate all this, which isn't needed.
+        console.log("firing")
+        var firstResultWidth = $(".result-container:first").width()
+        
+        if ( firstResultWidth <= settings.results.minSize ){ settings.results.grow = true; console.log("grow") }
+        if ( firstResultWidth >= settings.results.maxSize ){ settings.results.grow = false; console.log("shrink") }
+
+        // settings.results.currentSize = firstResultWidth
+        //other way, with growing and shrinking
+        while (! isWithinSafeBounds() ) {
+          var firstResultWidth = $(".result-container:first").width();
+          var newSize
+          if ( settings.results.grow ){ newSize = firstResultWidth + 1 }
+          else { newSize = firstResultWidth - 1 }
+          console.log("new" + newSize)
+          $(".result-container").width( newSize );
+          $(".result-container").height( newSize );
+          // console.log("new" + newSize)
+          // console.log("")
+          settings.results.currentSize = newSize + 2 // this 2 is totally arbitrary. I have no idea why it sets the size of the divs to 2 px less than newSize value
+          // console.log("res" + settings.results.currentSize)
+        }
+
+      }
+    }
+
+    // $('#results').on('mousewheel', function(event, delta) {
+    //     // console.log(event.deltaX, event.deltaY, event.deltaFactor);
+    //     // this.scrollLeft -= (-event.deltaX);
+    //     this.scrollLeft -= (event.deltaY);
+    //     // this.scrollLeft -= (delta);
+    //     event.preventDefault()
+    // });
+
+    function setLayoutStuff(){
+      $("body").css("padding-top", $("#top-stack").height() + 10)
+      $("body").css("padding-bottom", $("#bottom-stack").height() + 10)
+
+      $(".heading").css("padding-top", $("#top-stack").height() )
+      $(".heading").css("margin-top", -$("#top-stack").height() )
+      //if keeping them, set the input backgrounds to the width of hte inputs here
+      $("#size-wrapper .input-background").width( $("#size-input").width() + 24)
+      $("#strength-wrapper .input-background").width( $("#strength-input").width() + 24)
+
+      // console.log("layountstuff hit")
+      layoutCategoryNav()   
+      // makeSureResultCardScrollIsObvious()   
+    }
+
+    function setMeasurementUnits(system="metric"){
+      settings.systemOfMeasurement = system
+      if(system == "metric"){
+        $("#ml-button").addClass("active").siblings(this).removeClass("active")
+        $("#size-wrapper .input-background .text-wrapper").html("ml")
+        
+        $(".row-size.imperial").hide()
+        $(".row-size.metric").show()
+        // if( settings.unitsHaveBeenSet ){
+        //   $.each($(".row-size"), function(index, element){
+        //     $(this).html( round($(this).html() / floztoml), 1 )
+        //   })
+        // }
+      }
+
+      if(system == "imperial"){
+        $("#floz-button").addClass("active").siblings(this).removeClass("active")
+        $("#size-wrapper .input-background .text-wrapper").html("fl oz")
+        
+        $(".row-size.metric").hide()
+        $(".row-size.imperial").show()
+        // $.each($(".row-size"), function(index, element){
+        //   $(this).html( round($(this).html() * floztoml), 1 )
+        // })
+      }
+      // alert(settings)
+      // settings.unitsHaveBeenSet = true
+      showAndHideDrinksBasedOnSystem()
+    }
+
+  $(window).resize(function(){
+    setLayoutStuff()
+  })
+
+   function autorun()
+   {
+    console.log("autorun")
+    setLayoutStuff()
+    // showAndHideDrinksBasedOnSystem()
+   }
+
+   if (document.addEventListener) document.addEventListener("DOMContentLoaded", autorun, false); //<-- or "load"
+   else if (document.attachEvent) document.attachEvent("onreadystatechange", autorun);
+   else window.onload = autorun;
+  </script>
+
+
+</body>
 </html>
