@@ -93,7 +93,6 @@ function getDrinkData (sheetApiData) {
         }
     console.log(drinkData)
     return drinkData
-
 }
 
 function getSortedTableData(sheetApiData = {}, staticDataMode = false) {
