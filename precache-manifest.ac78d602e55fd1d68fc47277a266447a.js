@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "1f6e3e74ab15054e41c01d96f76012bf",
+    "revision": "0b02c13ba359bf4e6ca682d2a13b9767",
     "url": "/drinkingCardsUnits/index.html"
   },
   {
-    "revision": "5dccbac6175de8294c0a",
+    "revision": "a227c8243d71be3a6791",
     "url": "/drinkingCardsUnits/static/css/main.554d6a14.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/drinkingCardsUnits/static/js/2.b74f3dba.chunk.js"
   },
   {
-    "revision": "5dccbac6175de8294c0a",
-    "url": "/drinkingCardsUnits/static/js/main.6e6c20fa.chunk.js"
+    "revision": "a227c8243d71be3a6791",
+    "url": "/drinkingCardsUnits/static/js/main.7a974329.chunk.js"
   },
   {
     "revision": "b6067599c44cad75955c",
