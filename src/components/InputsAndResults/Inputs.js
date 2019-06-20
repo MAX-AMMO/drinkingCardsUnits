@@ -48,7 +48,13 @@ class Inputs extends React.Component {
             <div className="input-background"><div className="text-wrapper">{unitIndicator}</div></div>
             <div className="input-group">
 
-              <input  id="size-input" type="number" className="form-control" placeholder="Size" aria-label="Size" aria-describedby="basic-addon2" 
+              <input  
+                id="size-input" 
+                type="number" 
+                step="0.1"
+                className="form-control" 
+                placeholder="Size"
+                aria-label="Size" aria-describedby="basic-addon2" 
                 onChange={this.onSizeChange} value={round(this.props.size,1)} />
 
               <div className="btn-group-vertical">
