@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { selectTr } from 'action-makers/selectTr'
+import { round } from 'Functions'
 
 class TableRowDrink extends React.Component {
 	constructor(props){
@@ -38,12 +39,12 @@ class TableRowDrink extends React.Component {
 		if ( this.props.systemOfMeasurement === "metric" ) { 
 			sizeTd = 
 				<td className="row-size metric">
-	              {drinkObject.metricSize}
+	              {round(drinkObject.metricSize)}
 	            </td>}
 	    else if ( this.props.systemOfMeasurement === "imperial" ) { 
 			sizeTd = 
 				<td className="row-size imperial">
-	              {drinkObject.imperialSize}
+	              {round(drinkObject.imperialSize)}
 	            </td>}
 
 	return (

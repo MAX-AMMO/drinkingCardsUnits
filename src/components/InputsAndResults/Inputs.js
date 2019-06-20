@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { selectTr } from 'action-makers/selectTr';
+import { round } from 'Functions'
 
 class Inputs extends React.Component {
   constructor(props){
@@ -48,7 +49,7 @@ class Inputs extends React.Component {
             <div className="input-group">
 
               <input  id="size-input" type="number" className="form-control" placeholder="Size" aria-label="Size" aria-describedby="basic-addon2" 
-                onChange={this.onSizeChange} value={this.props.size} />
+                onChange={this.onSizeChange} value={round(this.props.size)} />
 
               <div className="btn-group-vertical">
                 <button 

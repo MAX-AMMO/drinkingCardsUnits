@@ -53,6 +53,7 @@ function calculateResults(size, strength, systemOfMeasurement="metric"){
 
 function round(num, decimals = 2){
       // return num.toFixed(decimals) // global roundig amount default is 2
+      if( typeof num === "string"){ num = parseFloat(num)}
       var zerosToReplace = ""; for (var i = 0; i < decimals; i++ ) { zerosToReplace = zerosToReplace + "0" }
       var re = new RegExp("[.,]"+zerosToReplace)
       return (num).toFixed(decimals).replace(re, "");
@@ -105,8 +106,8 @@ function getSortedTableData(sheetApiData = {}, staticDataMode = false) {
   drinkData.forEach( function(drinkDataValue){
   	//fill in the sizes
   	drinkDataValue.metricSize ? 
-  		drinkDataValue.imperialSize = convertUnits("mltofloz", drinkDataValue.metricSize,0) :
-  		drinkDataValue.metricSize = convertUnits("floztoml", drinkDataValue.imperialSize,0)
+  		drinkDataValue.imperialSize = convertUnits("mltofloz", drinkDataValue.metricSize) :
+  		drinkDataValue.metricSize = convertUnits("floztoml", drinkDataValue.imperialSize)
     //add the category to the table data if it's not there
     if ( !tableData[drinkDataValue["category"]] ){ tableData[drinkDataValue["category"]] = [] };
     // add the object to the category
@@ -133,16 +134,16 @@ function getSortedTableData(sheetApiData = {}, staticDataMode = false) {
  return sortedTableData
 }
 
-function convertUnits(conversion, valueIn, decimals = 0){
+function convertUnits(conversion, valueIn){
 	const floztoml = 0.033814
 	switch (conversion){
-		case "floztoml": return round(valueIn/floztoml, decimals);
+		case "floztoml": return valueIn/floztoml;
 			break;
-		case "mltofloz": return round(valueIn*floztoml, decimals);
+		case "mltofloz": return valueIn*floztoml;
 			break;
 		default:
 			break;
 	}
 }
 
-export { calculateResults, getSortedTableData, convertUnits }
+export { calculateResults, getSortedTableData, convertUnits, round }
