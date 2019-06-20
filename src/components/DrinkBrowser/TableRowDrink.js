@@ -17,7 +17,7 @@ class TableRowDrink extends React.Component {
 		this.props.setStrength(e.currentTarget.getAttribute('data-strength'))
 		const id = e.currentTarget.getAttribute('id')
 		if (!(id === this.props.selectedTr)){ 
-			window.navigator.vibrate(100);
+			// window.navigator.vibrate(100);
 		}
 		// this.props.setSelectedTr(id)
 		this.props.selectTr(id)
@@ -54,7 +54,7 @@ class TableRowDrink extends React.Component {
 	          	data-imperial-size={drinkObject.imperialSize}
 	          	data-strength={drinkObject.strength}
 	          	className = {activeClass}
-				>
+			>
 
 	            <td className="row-image">
 	            </td>

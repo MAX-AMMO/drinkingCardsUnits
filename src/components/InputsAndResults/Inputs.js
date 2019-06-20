@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { selectTr } from 'action-makers/selectTr'
+import { selectTr } from 'action-makers/selectTr';
 
 class Inputs extends React.Component {
   constructor(props){

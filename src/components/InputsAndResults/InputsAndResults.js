@@ -9,7 +9,6 @@ class InputsAndResults extends React.Component {
     // console.log("State is " + JSON.stringify(this.state))
     return (
       <div className="container-fluid" id="bottom-stack">
-        <button onClick={this.props.setSize} />
         <Results 
           // test="cool" 
           // size = {this.props.size}

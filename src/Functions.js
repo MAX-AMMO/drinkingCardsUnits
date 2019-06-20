@@ -1,3 +1,5 @@
+import $ from "jquery";
+
 function calculateResults(size, strength, systemOfMeasurement="metric"){
 
 	const gramsPerCard = 10
@@ -143,4 +145,4 @@ function convertUnits(conversion, valueIn, decimals = 0){
 	}
 }
 
-export {calculateResults, getSortedTableData, convertUnits}
+export { calculateResults, getSortedTableData, convertUnits }
