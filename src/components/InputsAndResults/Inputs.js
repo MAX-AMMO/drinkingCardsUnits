@@ -51,7 +51,7 @@ class Inputs extends React.Component {
               <input  
                 id="size-input" 
                 type="number" 
-                step="0.1"
+                step="any"
                 className="form-control" 
                 placeholder="Size"
                 aria-label="Size" aria-describedby="basic-addon2" 

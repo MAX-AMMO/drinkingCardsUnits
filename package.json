@@ -11,7 +11,7 @@
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0"
   },
-  "homepage": "https://max-ammo.github.io/drinkingCardsUnits",
+  "homepage": "https://units.drinking.cards",
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
