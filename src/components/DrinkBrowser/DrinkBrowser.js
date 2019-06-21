@@ -52,9 +52,16 @@ class DrinkBrowser extends React.Component {
     console.log(this.state.sortedTableData)
     const { error, isLoaded, sortedTableData } = this.state;
     if (error) {
-      return <div>Error: {error.message}</div>;
+      return  (	<div class="alert alert-danger" role="alert">
+				  Couldn't Load Data From the API. :-(
+				</div>
+      		)
     } else if (!isLoaded) {
-      return <div></div>;
+      return <div className="d-flex justify-content-center">
+      			<div className="spinner-border text-primary" role="status" style={{height: '20rem',width: '20rem','margin-top': '5rem'}}>
+			    	<span className="sr-only">Loading...</span>
+			 	</div>
+			 </div>;
     } else {
 	    return (
 	      <React.Fragment>

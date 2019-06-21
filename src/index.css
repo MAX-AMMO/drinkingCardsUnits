@@ -6,7 +6,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /*this should be changed to be dynamic*/
-  padding-top: 66px;
+  /*padding-top: 66px;*/
 }
 
 code {
@@ -15,6 +15,10 @@ code {
 }
 
 /*me*/
+
+#left-side, body{
+  height: 100%;
+}
 
 .selector-for-some-widget {
     box-sizing: content-box;

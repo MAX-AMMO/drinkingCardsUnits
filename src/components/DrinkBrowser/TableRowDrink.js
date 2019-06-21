@@ -39,12 +39,12 @@ class TableRowDrink extends React.Component {
 		if ( this.props.systemOfMeasurement === "metric" ) { 
 			sizeTd = 
 				<td className="row-size metric">
-	              {round(drinkObject.metricSize)}
+	              {round(drinkObject.metricSize)} ml
 	            </td>}
 	    else if ( this.props.systemOfMeasurement === "imperial" ) { 
 			sizeTd = 
 				<td className="row-size imperial">
-	              {round(drinkObject.imperialSize)}
+	              {round(drinkObject.imperialSize)} floz
 	            </td>}
 
 	return (
@@ -66,7 +66,7 @@ class TableRowDrink extends React.Component {
 	            {sizeTd}
 	             
 	            <td className="row-strength">
-	              {drinkObject.strength}
+	              {drinkObject.strength} %
 	            </td>
           	</tr>
 		)
