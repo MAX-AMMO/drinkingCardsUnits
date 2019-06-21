@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/drinkingCardsUnits/static/css/main.e6aaa4b1.chunk.css",
-    "main.js": "/drinkingCardsUnits/static/js/main.7bdf4156.chunk.js",
-    "main.js.map": "/drinkingCardsUnits/static/js/main.7bdf4156.chunk.js.map",
-    "runtime~main.js": "/drinkingCardsUnits/static/js/runtime~main.4790f248.js",
-    "runtime~main.js.map": "/drinkingCardsUnits/static/js/runtime~main.4790f248.js.map",
-    "static/js/2.b74f3dba.chunk.js": "/drinkingCardsUnits/static/js/2.b74f3dba.chunk.js",
-    "static/js/2.b74f3dba.chunk.js.map": "/drinkingCardsUnits/static/js/2.b74f3dba.chunk.js.map",
-    "index.html": "/drinkingCardsUnits/index.html",
-    "precache-manifest.f45b12ed93e40f42dd0409fe2a9eb289.js": "/drinkingCardsUnits/precache-manifest.f45b12ed93e40f42dd0409fe2a9eb289.js",
-    "service-worker.js": "/drinkingCardsUnits/service-worker.js",
-    "static/css/main.e6aaa4b1.chunk.css.map": "/drinkingCardsUnits/static/css/main.e6aaa4b1.chunk.css.map",
-    "static/media/logo.svg": "/drinkingCardsUnits/static/media/logo.5d5d9eef.svg"
+    "main.css": "/static/css/main.e6aaa4b1.chunk.css",
+    "main.js": "/static/js/main.13c6385e.chunk.js",
+    "main.js.map": "/static/js/main.13c6385e.chunk.js.map",
+    "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
+    "runtime~main.js.map": "/static/js/runtime~main.a8a9905a.js.map",
+    "static/js/2.b74f3dba.chunk.js": "/static/js/2.b74f3dba.chunk.js",
+    "static/js/2.b74f3dba.chunk.js.map": "/static/js/2.b74f3dba.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.9d14877b6c035dff281eaba5b8007119.js": "/precache-manifest.9d14877b6c035dff281eaba5b8007119.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.e6aaa4b1.chunk.css.map": "/static/css/main.e6aaa4b1.chunk.css.map",
+    "static/media/logo.svg": "/static/media/logo.5d5d9eef.svg"
   }
 }
