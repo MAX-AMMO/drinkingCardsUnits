@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/drinkingCardsUnits/static/css/main.554d6a14.chunk.css",
-    "main.js": "/drinkingCardsUnits/static/js/main.7bdf4156.chunk.js",
-    "main.js.map": "/drinkingCardsUnits/static/js/main.7bdf4156.chunk.js.map",
-    "runtime~main.js": "/drinkingCardsUnits/static/js/runtime~main.4790f248.js",
-    "runtime~main.js.map": "/drinkingCardsUnits/static/js/runtime~main.4790f248.js.map",
-    "static/js/2.b74f3dba.chunk.js": "/drinkingCardsUnits/static/js/2.b74f3dba.chunk.js",
-    "static/js/2.b74f3dba.chunk.js.map": "/drinkingCardsUnits/static/js/2.b74f3dba.chunk.js.map",
-    "index.html": "/drinkingCardsUnits/index.html",
-    "precache-manifest.a73dba8243fa1889b893a663519b6c77.js": "/drinkingCardsUnits/precache-manifest.a73dba8243fa1889b893a663519b6c77.js",
-    "service-worker.js": "/drinkingCardsUnits/service-worker.js",
-    "static/css/main.554d6a14.chunk.css.map": "/drinkingCardsUnits/static/css/main.554d6a14.chunk.css.map",
-    "static/media/logo.svg": "/drinkingCardsUnits/static/media/logo.5d5d9eef.svg"
+    "main.css": "units.drinking.cards/static/css/main.554d6a14.chunk.css",
+    "main.js": "units.drinking.cards/static/js/main.badcd4e0.chunk.js",
+    "main.js.map": "units.drinking.cards/static/js/main.badcd4e0.chunk.js.map",
+    "runtime~main.js": "units.drinking.cards/static/js/runtime~main.cee7cb17.js",
+    "runtime~main.js.map": "units.drinking.cards/static/js/runtime~main.cee7cb17.js.map",
+    "static/js/2.b74f3dba.chunk.js": "units.drinking.cards/static/js/2.b74f3dba.chunk.js",
+    "static/js/2.b74f3dba.chunk.js.map": "units.drinking.cards/static/js/2.b74f3dba.chunk.js.map",
+    "index.html": "units.drinking.cards/index.html",
+    "precache-manifest.6cebdcd38b5e4e389dc0864bfc1d026d.js": "units.drinking.cards/precache-manifest.6cebdcd38b5e4e389dc0864bfc1d026d.js",
+    "service-worker.js": "units.drinking.cards/service-worker.js",
+    "static/css/main.554d6a14.chunk.css.map": "units.drinking.cards/static/css/main.554d6a14.chunk.css.map",
+    "static/media/logo.svg": "units.drinking.cards/static/media/logo.5d5d9eef.svg"
   }
 }
