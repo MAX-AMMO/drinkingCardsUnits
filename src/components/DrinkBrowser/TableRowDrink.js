@@ -10,7 +10,6 @@ class TableRowDrink extends React.Component {
 	}
 
 	handleClick(e){
-		//TODO imperial
 		this.props.systemOfMeasurement === "imperial" ?
 		this.props.setSize(e.currentTarget.getAttribute('data-imperial-size')) :
 		this.props.setSize(e.currentTarget.getAttribute('data-metric-size'))
@@ -18,9 +17,8 @@ class TableRowDrink extends React.Component {
 		this.props.setStrength(e.currentTarget.getAttribute('data-strength'))
 		const id = e.currentTarget.getAttribute('id')
 		if (!(id === this.props.selectedTr)){ 
-			// window.navigator.vibrate(100);
+			// TODO window.navigator.vibrate(100);
 		}
-		// this.props.setSelectedTr(id)
 		this.props.selectTr(id)
 	}
 	render() {
@@ -30,9 +28,6 @@ class TableRowDrink extends React.Component {
 		const id = categoryName+index
 		var activeClass
 
-		// this.props.selectedTr === id ? activeClass = "active" : activeClass = null
-		
-		// console.log("selectedTr is" + this.props.selectedTr)
 		this.props.selectedTr === id ? activeClass = "active" : activeClass = null
 
 		let sizeTd;
@@ -82,5 +77,4 @@ const mapDispatchToProps = dispatch => ({
  selectTr: (trId) => dispatch(selectTr(trId))
 })
 
-// export { TableRowDrink }
 export default connect(mapStateToProps, mapDispatchToProps)( TableRowDrink );

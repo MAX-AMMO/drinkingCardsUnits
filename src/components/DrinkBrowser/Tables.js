@@ -34,7 +34,7 @@ class Tables extends React.Component {
       const element = $("#navbar-categories ul .nav-item.category:hidden:first")
       element.show()
       const category = element.attr("data-category")
-      if($("#navbar-categories .dropdown-menu").children("a[data-category='"+category+"']").length != 0 ){
+      if($("#navbar-categories .dropdown-menu").children("a[data-category='"+category+"']").length !== 0 ){
         $("#navbar-categories .dropdown-menu a[data-category='"+category+"']").remove()
       }
     }
@@ -42,7 +42,7 @@ class Tables extends React.Component {
       const element = $("#navbar-categories ul .nav-item.category:visible:last")
       element.hide()
       const category = element.attr("data-category")
-      if($("#navbar-categories .dropdown-menu").children("a[data-category='"+category+"']").length == 0 ){
+      if($("#navbar-categories .dropdown-menu").children("a[data-category='"+category+"']").length === 0 ){
         $("#navbar-categories .dropdown-menu").prepend('<a class="dropdown-item" data-category="'+category+'" href="#table-'+category+'">'+category+'</a>')
       }
     }

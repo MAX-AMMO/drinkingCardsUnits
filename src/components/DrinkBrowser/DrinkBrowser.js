@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 
 import { getSortedTableData } from 'Functions'
 
@@ -16,15 +15,8 @@ class DrinkBrowser extends React.Component {
 	      isLoaded: false,
 	      sortedTableData: []
 	    };
-	 // this.setSelectedTr = this.setSelectedTr.bind(this)
 	  }
-	// setSelectedTr(thingIn){
-	// 	this.setState({
-	// 		selectedTr: thingIn
-	// 	});
-	// }
 	componentDidMount() {
-	// const sortedTableData = getSortedTableData()
     fetch("https://spreadsheets.google.com/feeds/cells/1b5ABg-gOX1WXl5U5FMTIj5oLXS9KyDyvP6w9ium_dN0/1/public/values?alt=json")
       .then(res => res.json())
       .then(
@@ -48,8 +40,7 @@ class DrinkBrowser extends React.Component {
   }
 
   render(){
-    // const sortedTableData = getSortedTableData()
-    console.log(this.state.sortedTableData)
+    // console.log(this.state.sortedTableData)
     const { error, isLoaded, sortedTableData } = this.state;
     if (error) {
       return  (	<div class="alert alert-danger" role="alert">
@@ -58,7 +49,7 @@ class DrinkBrowser extends React.Component {
       		)
     } else if (!isLoaded) {
       return <div className="d-flex justify-content-center">
-      			<div className="spinner-border text-primary" role="status" style={{height: '20rem',width: '20rem','margin-top': '5rem'}}>
+      			<div className="spinner-border text-primary" role="status" style={{height: '20rem',width: '20rem',marginTop: '5rem'}}>
 			    	<span className="sr-only">Loading...</span>
 			 	</div>
 			 </div>;
@@ -70,8 +61,6 @@ class DrinkBrowser extends React.Component {
 	      </div>
 	        <Tables 
 	        	tableData={sortedTableData} 
-	        	// selectedTr={this.state.selectedTr}
-	        	// setSelectedTr={this.setSelectedTr}
 	        	{...this.props} />
 	      </React.Fragment>
 	      )

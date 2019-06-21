@@ -5,7 +5,6 @@ class CategoryTable extends React.Component {
   render(){
     const categoryName = Object.keys(this.props.categoryObject)[0];
     const drinkList = Object.values(this.props.categoryObject)[0]
-    const selectedTR = this.props.selectedTr
 
     return (
       <React.Fragment >

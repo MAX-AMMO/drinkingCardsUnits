@@ -1,5 +1,3 @@
-import $ from "jquery";
-
 function calculateResults(size, strength, systemOfMeasurement="metric"){
 
 	const gramsPerCard = 10
@@ -30,11 +28,6 @@ function calculateResults(size, strength, systemOfMeasurement="metric"){
         drinkData.cards = round(drinkData.gAlc/gramsPerCard, 0)
       }
 
-      // console.log(drinkData);
-
-      // const json = {
-      //   "cards" : drinkData.cards
-      // }
       const json = [
       	{title: "cards", number: drinkData.cards}
       ]
@@ -44,27 +37,22 @@ function calculateResults(size, strength, systemOfMeasurement="metric"){
         drinkData["unitGramsOf"+unitGramValue.unitGrams.toString()] = numberOfUnitsForThisGramValue;
         unitGramValue.countries.forEach( function (countryCode) {
 		  json.push({ title: countryCode +" Units", number: round(numberOfUnitsForThisGramValue,2) })
-          // json[countryCode +" Units"] = round(numberOfUnitsForThisGramValue,2)
         });
       });
-      // console.log(json);
       return json
     }
 
 function round(num, decimals = 2){
-      // return num.toFixed(decimals) // global roundig amount default is 2
       if( typeof num === "string"){ num = parseFloat(num)}
       var zerosToReplace = ""; for (var i = 0; i < decimals; i++ ) { zerosToReplace = zerosToReplace + "0" }
       var re = new RegExp("[.,]"+zerosToReplace)
       return (num).toFixed(decimals).replace(re, "");
-      // return (num).toFixed(decimals).replace(/[.,]00$/, "");
     }
 
 function getDrinkData (sheetApiData) {
 		var drinkData = []
 		// get api data (this is a callback that is run when the api call loads)
         var apiData = sheetApiData.feed.entry
-        var rowData = [];
         var drinkObject = {}; // this object is re populated with each new row
         
         for(var r=0; r<apiData.length; r++) {
@@ -89,9 +77,11 @@ function getDrinkData (sheetApiData) {
                 drinkData.push( drinkObject );
                 drinkObject = {};
                 break;
+              default:
+                break;
             }
         }
-    console.log(drinkData)
+    // console.log(drinkData)
     return drinkData
 }
 
@@ -113,8 +103,6 @@ function getSortedTableData(sheetApiData = {}, staticDataMode = false) {
     tableData[drinkDataValue.category].push(drinkDataValue)
   });
 
-  // console.log("table data is" + JSON.stringify(tableData))
-  //sort the table data (this data is also for the nav)
   var sortedTableData = [];
   const order = ["wine", "beer", "spirit","other"]
   const splitPoint = 3
@@ -129,7 +117,7 @@ function getSortedTableData(sheetApiData = {}, staticDataMode = false) {
   order.slice(splitPoint).forEach( function(categoryName){
       sortedTableData.push({[categoryName]: tableData[categoryName]})
   })
-  console.log(sortedTableData)
+  // console.log(sortedTableData)
  return sortedTableData
 }
 

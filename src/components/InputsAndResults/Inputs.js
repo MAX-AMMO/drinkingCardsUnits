@@ -88,6 +88,5 @@ const mapDispatchToProps = dispatch => ({
  selectTr: (trId) => dispatch(selectTr(trId))
 })
 
-// export { Inputs }
 export default connect( null , mapDispatchToProps)( Inputs );
 

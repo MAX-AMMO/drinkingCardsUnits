@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import logo from './logo.svg';
 import './App.css';
 import {InputsAndResults} from './components/InputsAndResults/InputsAndResults'
 
@@ -9,7 +8,7 @@ import {DrinkBrowser} from './components/DrinkBrowser/DrinkBrowser'
 
 import { simpleAction } from './action-makers/simpleAction';
 
-import { getSortedTableData, convertUnits } from './Functions'
+import { convertUnits } from './Functions'
 
 
 //https://medium.com/backticks-tildes/setting-up-a-redux-project-with-create-react-app-e363ab2329b8
@@ -35,8 +34,6 @@ function ReduxTestButton(props) {
   )
 }
 
-
-
 class App extends React.Component {
   constructor(props){
     super(props);
@@ -57,7 +54,7 @@ class App extends React.Component {
 
   // setSize(numberIn){this.setState({size: this.state.systemOfMeasurement = "metric" ? numberIn : convertUnits("floztoml",numberIn)})}
   setSize(numberIn){
-    console.log("state of things "+this.state.systemOfMeasurement)
+    // console.log("state of things "+this.state.systemOfMeasurement)
     // this.setState({size: this.state.systemOfMeasurement === "imperial" ? numberIn : convertUnits("mltofloz",numberIn)})};
     this.setState({size: numberIn});
   }
@@ -115,10 +112,6 @@ class App extends React.Component {
     );
   }
 }
-
-
-
-
 
 // export default App;
 // export default connect()(App);
